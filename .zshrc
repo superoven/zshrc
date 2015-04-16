@@ -18,11 +18,6 @@ export DOW='/Users/tritenour/Downloads'
 
 export LOG='/var/log'
 
-export COURIER_API_LOG=$LOG/ebaynow-courier-api-1.0/app.log
-export CONSUMER_API_LOG=$LOG/ebaynow-api-2.3/app.log
-export DASHBOARD_LOG=$LOG/ebaynow-dashboard/gunicorn.log
-export DEA_LOG=$LOG/ebaynow-delivery-events-api/app.log
-
 # User configuration
 
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
@@ -76,17 +71,6 @@ build() {
 
 regex() {
     gawk 'match($0,/'$1'/, ary) {print ary['${2:-'0'}']}';
-}
-
-
-send-cred() {
-    cat ~/.ssh/ebay-rsa.pub | ssh $1 'mkdir .ssh; cat >> .ssh/authorized_keys'
-}
-
-update-scotty() {
-    echo "warpdrive: "; cd ~/git/scotty/warpdrive; git pull
-    echo "marvin: "; cd ~/git/scotty/marvin; git pull
-    echo "enterprise: "; cd ~/git/scotty/enterprise; git pull
 }
 
 makechef() {
